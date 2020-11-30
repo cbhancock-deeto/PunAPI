@@ -26,7 +26,9 @@ connection.once("open", () => {
 
 const jokesRouter = require("./routes/joke.js");
 
-app.use("/", jokesRouter);
+app.use("/jokes", jokesRouter);
+
+app.get("/", (req, res) => res.render("joke API"));
 
 app.listen(port, () => {
 	console.log(`Server is running on port ${port}`);
