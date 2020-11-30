@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+var path = require("path");
 
 require("dotenv").config();
 
@@ -28,7 +29,9 @@ const jokesRouter = require("./routes/joke.js");
 
 app.use("/jokes", jokesRouter);
 
-app.get("/", (req, res) => res.render("joke API"));
+app.get("/", (req, res) => {
+	res.sendFile(path.join(__dirname + "/index.html"));
+});
 
 app.listen(port, () => {
 	console.log(`Server is running on port ${port}`);
